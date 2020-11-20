@@ -18,6 +18,35 @@ console.log(numeriComputer);
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
+var numeriUtente = []
+
+var partitaFinita = false;
+
+while (numeriUtente.length < 84 && partitaFinita == false) {
+  var numeroInserito = parseInt(prompt("Inserisci un numero tra 1 e 100"));
+
+  if (numeroDuplicato(numeriUtente, numeroInserito) == false) {
+
+    if (numeroDuplicato(numeriComputer, numeroInserito) == true) {
+      partitaFinita = true;
+    } else {
+      numeriUtente.push(numeroInserito);
+    }
+
+  } else {
+    alert("Numero già inserito!");
+  }
+
+}
+
+console.log(numeriUtente)
+
+if (partitaFinita = true) {
+  alert("Hai perso! Il tuo punteggio è " + numeriUtente.length);
+} else {
+  alert("Hai vinto! Il tuo punteggio è " + numeriUtente.length);
+}
+
 // BONUS: (da fare solo se funziona tutto il resto)
 // all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
 // con difficoltà 0 => tra 1 e 100
@@ -36,8 +65,9 @@ function numeroDuplicato(array, elemento) {
   for (i = 0; i < array.length ; i++) {
     if (elemento == array[i]) {
       trovato = true;
+      return trovato;
     }
   }
-  return trovato;
 
+  return trovato;
 }
