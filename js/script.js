@@ -1,9 +1,32 @@
+// BONUS: (da fare solo se funziona tutto il resto)
+// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 =>  tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+var difficolta = prompt("Scegli il livello di difficoltà tra 0, 1 o 2");
+
+var range;
+
+switch (difficolta) {
+  case "0":
+    range = 100;
+  break;
+
+  case "1":
+    range = 80;
+  break;
+
+  case "2":
+    range = 50;
+  break;
+}
+
 // Il computer deve generare 16 numeri casuali tra 1 e 100.
 // I numeri non possono essere duplicati.
 var numeriComputer = [];
 
 while (numeriComputer.length < 16) {
-  var numeroCasuale = numeroRandom (1, 100);
+  var numeroCasuale = numeroRandom(1, range);
 
   if (numeroDuplicato(numeriComputer, numeroCasuale) == false) {
     numeriComputer.push(numeroCasuale);
@@ -22,8 +45,8 @@ var numeriUtente = []
 
 var partitaFinita = false;
 
-while (numeriUtente.length < 84 && partitaFinita == false) {
-  var numeroInserito = parseInt(prompt("Inserisci un numero tra 1 e 100"));
+while (numeriUtente.length < (range - 16) && partitaFinita == false) {
+  var numeroInserito = parseInt(prompt("Inserisci un numero tra 1 e " + range));
 
   if (numeroDuplicato(numeriUtente, numeroInserito) == false) {
 
@@ -46,13 +69,6 @@ if (partitaFinita = true) {
 } else {
   alert("Hai vinto! Il tuo punteggio è " + numeriUtente.length);
 }
-
-// BONUS: (da fare solo se funziona tutto il resto)
-// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 =>  tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
-
 
 // Funzioni---------------------------------------------------------------------
 function numeroRandom(min, max) {
