@@ -3,20 +3,24 @@
 // con difficoltà 0 => tra 1 e 100
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
-var difficolta = prompt("Scegli il livello di difficoltà tra 0, 1 o 2");
+var difficolta = parseInt(prompt("Scegli il livello di difficoltà tra 0, 1 o 2"));
+
+while (difficolta < 0 || difficolta > 2 || isNaN(difficolta)) {
+  difficolta = parseInt(prompt("Puoi scegliere solo NUMERI tra 0, 1 o 2"));
+}
 
 var range;
 
 switch (difficolta) {
-  case "0":
+  case 0:
     range = 100;
   break;
 
-  case "1":
+  case 1:
     range = 80;
   break;
 
-  case "2":
+  case 2:
     range = 50;
   break;
 }
@@ -47,6 +51,10 @@ var partitaFinita = false;
 
 while (numeriUtente.length < (range - 16) && partitaFinita == false) {
   var numeroInserito = parseInt(prompt("Inserisci un numero tra 1 e " + range));
+
+  while (numeroInserito < 1 || numeroInserito > range || isNaN(numeroInserito)) {
+    numeroInserito = parseInt(prompt("Puoi inserire solo NUMERI tra 1 e " + range));
+  }
 
   if (numeroDuplicato(numeriUtente, numeroInserito) == false) {
 
