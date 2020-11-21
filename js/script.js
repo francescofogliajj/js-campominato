@@ -56,27 +56,20 @@ while (numeriUtente.length < (range - 16) && partitaFinita == false) {
     numeroInserito = parseInt(prompt("Puoi inserire solo NUMERI tra 1 e " + range));
   }
 
-  if (numeroDuplicato(numeriUtente, numeroInserito) == false) {
-
-    if (numeroDuplicato(numeriComputer, numeroInserito) == true) {
-      partitaFinita = true;
-    } else {
-      numeriUtente.push(numeroInserito);
-    }
-
+  if (numeroDuplicato(numeriComputer, numeroInserito) == true) {
+    partitaFinita = true;
+    alert("Hai perso");
+  } else if (numeroDuplicato(numeriUtente, numeroInserito) == false) {
+    numeriUtente.push(numeroInserito);
   } else {
     alert("Numero già inserito!");
   }
 
 }
 
-console.log(numeriUtente)
+console.log(numeriUtente);
 
-if (partitaFinita = true) {
-  alert("Hai perso! Il tuo punteggio è " + numeriUtente.length);
-} else {
-  alert("Hai vinto! Il tuo punteggio è " + numeriUtente.length);
-}
+alert("Punteggio: " + numeriUtente.length + "/" + (range - 16));
 
 // Funzioni---------------------------------------------------------------------
 function numeroRandom(min, max) {
@@ -86,7 +79,7 @@ function numeroRandom(min, max) {
 function numeroDuplicato(array, elemento) {
   var trovato = false;
 
-  for (i = 0; i < array.length ; i++) {
+  for (i = 0; i < array.length; i++) {
     if (elemento == array[i]) {
       trovato = true;
       return trovato;
